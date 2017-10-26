@@ -86,7 +86,7 @@ Maven/ Spring/ Security/ JPA(Hibernate)/ REST(Jackson)/ Bootstrap(CSS)/ jQuery +
 - Тестирование через SoapUi. UTF-8
 - Домашнее задание (HW7 + Optional)
 
-#### 28.05: 8-е занятие
+#### 28.12: 8-е занятие
 - Разбор домашнего задания HW7 + Optional
 - WebJars. jQuery и JavaScript frameworks
 - Bootstrap
