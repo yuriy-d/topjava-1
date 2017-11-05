@@ -244,7 +244,7 @@ protected void doPost(HttpServletRequest request, ...) {
 
 > Почему теряются атрибуты при передаче на сервлет: `http://localhost:8080/topjava/meals?action=add&...` и `req.getAttribute("action")` = null ?
 
-См. <a href="http://stackoverflow.com/questions/5243754/difference-between-getattribute-and-getparameter">Difference between getAttribute() and getParameter()</a>. Отсюда также следует, что при редиректе что атрибуты теряются.
+См. <a href="http://stackoverflow.com/questions/5243754/difference-between-getattribute-and-getparameter">Difference between getAttribute() and getParameter()</a>. Отсюда также следует, что при редиректе атрибуты теряются.
 
 > Зачем нужен в jsp `<jsp:useBean id=".." scope="request" type=".."/>` ?
 
