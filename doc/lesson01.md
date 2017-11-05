@@ -46,7 +46,7 @@
 
 > Почему у `User.registered` тип `Date`, а `Meal.dateTime` `LocalDateTime `?
 
-Врямя регистрации - абсолютное (конкретный момент), а время еды по бизнес логике относительно (те независит от часового пояса)
+Время регистрации - абсолютное (конкретный момент), а время еды по бизнес логике относительно (те не зависит от часового пояса)
 
 ### ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 3. <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFcUVfU1hmYUx3Rzg">HW0 Optional 2: реализация в один проход и одной строкой Stream API</a>
 #### Apply 1_3_HW0_optional2.patch
