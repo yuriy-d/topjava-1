@@ -5,3 +5,5 @@ target
 log
 *.patch
 /1_0_fix.patch
+patch
+graduation.md
