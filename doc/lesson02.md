@@ -108,7 +108,7 @@
 
 Вообще как правило возвращают `List`, если не просится по коду более общий случай (например возможный `Set` или `Collection`, возвращаемый `Map.values()`). Если возвращается отсортированный список, то `List` будет адекватнее.
 
-###  ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 5. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFWXA1b0pnMGlvU0U">Обзор  Spring Framework. Spring Context.</a>
+###  ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 5. <a href="https://drive.google.com/file/d/1JyMSvGH5ZwxezVDBYrQd9jB_U1HeFGr2">Обзор  Spring Framework. Spring Context.</a>
 #### Apply 2_4_add_spring_context.patch
 -  <a href="http://en.wikipedia.org/wiki/Spring_Framework">Spring Framework</a>
 -  <a href="http://spring.io/projects">Проекты Spring</a>.
