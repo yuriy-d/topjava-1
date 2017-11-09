@@ -31,7 +31,7 @@
 Про использование паттерна Repository будет подробно рассказано в видео "Слои приложения"
 
 > - Переименовал `mealEdit.jsp` в `mealForm.jsp`
-> - В `meal.jsp` используется <a href="http://stackoverflow.com/questions/1890438/how-to-get-parameters-from-the-url-with-jsp#1890462">параметр запроса `param.action`</a>, который не кладется а атрибуты.
+> - В `meal.jsp` используется <a href="http://stackoverflow.com/questions/1890438/how-to-get-parameters-from-the-url-with-jsp#1890462">параметр запроса `param.action`</a>, который не кладется в атрибуты.
 > - В `MealServlet.doGet()` сделал выбор через `switch`
 > - Пофиксил багу c `history.back()` в `mealForm.jsp` для **FireFox** (коммит формы при Cancel, сделал `type="button"`).
 
