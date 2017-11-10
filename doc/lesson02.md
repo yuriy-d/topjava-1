@@ -97,6 +97,10 @@
 
 Так с ним удобнее работать. И у нас нет никаких действий по восстановлению состояния приложения (no recoverable conditions): <a href="http://stackoverflow.com/questions/6115896/java-checked-vs-unchecked-exception-explanation">checked vs unchecked exception</a>. По последним данным checked exception вообще depricated: <a href="http://blog.takipi.com/ignore-checked-exceptions-all-the-cool-devs-are-doing-it-based-on-600000-java-projects">Ignore Checked Exceptions</a>
 
+> Зачем в API пишем `NotFoundException`, если они `RuntimeException`?
+
+Обычно не пишут. Я написал для информации разработчикам - здесь делаем проверку и может быть брошено.
+
 > Зачем в `AdminRestController` переопределяются методы родителя с вызовом тех же родительских?
 
 Сделано на будущее, мы будем работать с `AdminRestController`.
