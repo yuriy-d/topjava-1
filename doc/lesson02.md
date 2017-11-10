@@ -63,8 +63,9 @@
 > - Поменял `LoggedUser` на `AuthorizedUser`
 > - Добавил проверку id пользователя, пришедшего в контроллер ([treat IDs in REST body](https://stackoverflow.com/a/32728226/548473), "If it is a public API you should be conservative when you reply, but accept liberally")
 
+![Слои приложения](http://4.bp.blogspot.com/-B4BdrPHfILA/Tu6dC5uK4dI/AAAAAAAAAeQ/iPEM0WctR7Y/s1600/Roo+Technical+Architecture+Diagram.png)
+
 -  <a href="http://en.wikipedia.org/wiki/Multilayered_architecture">Паттерн "Слои приложения"</a>
--  <a href="https://www.genuitec.com/products/myeclipse/learning-center/spring/myeclipse-for-spring-reference-blueprints/">Архитектурные слои приложения в Spring</a>
 -  <a href="https://ru.wikipedia.org/wiki/Data_Access_Object">Data Access Object</a>
 -  <a href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Паттерн DTO</a>
 -  <a href="http://stackoverflow.com/questions/1612334/difference-between-dto-vo-pojo-javabeans">Value Object и Data Transfer Object</a>
