@@ -179,6 +179,7 @@
 --------------------
 
 ## ![hw](https://cloud.githubusercontent.com/assets/13649199/13672719/09593080-e6e7-11e5-81d1-5cb629c438ca.png) Домашнее задание HW02
+**Еще раз смотрим на [демо приложение](http://topjava.herokuapp.com) и вникаем, что такое пользователь и его еда и что он может с ней сделать. Когда пользователь авторизуется в приложении, его id и норма калорий чудесным образом попадают в  `AuthorizedUser` и в приложении мы может обращаемся к ним. Как они реально туда попадут будет в уроке  9 (Spring Security, сессия и куки)** 
 - 1: переименовать `MockUserRepositoryImpl` в `InMemoryUserRepositoryImpl` и имплементировать по аналогии с `InMemoryMealRepositoryImpl` (список пользователей возвращать отсортированным по имени)
 - 2: сделать `Meal extends AbstractBaseEntity`, `MealWithExceed` перенести в пакет `ru.javawebinar.topjava.to` (transfer objects)
 - 3: изменить `MealRepository/InMemoryMealRepositoryImpl`: в одном общем хранилище хранится вся еда всех пользователей. Любой пользователь авторизуется и видит/модифицирует только свою еду.
