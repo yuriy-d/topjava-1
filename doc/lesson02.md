@@ -91,7 +91,7 @@
 
 > Почему контроллеры положили в папку web, а не в conrollers?
 
-Тоже самое что `domain/model` - просто разные названия.
+То же самое что `domain/model` - просто разные названия.
 
 > Зачем мы наследуем `NotFoundException` от `RuntimeException`?
 
@@ -111,7 +111,7 @@
 
 > Что лучше возвращать из API: `Collection` или `List`
 
-Вообще как правило возвращают `List`, если не просится по коду более общий случай (например возможный `Set` или `Collection`, возвращаемый `Map.values()`). Если возвращается отсортированный список, то `List` будет адекватнее.
+Вообще, как правило, возвращают `List`, если не просится по коду более общий случай (например возможный `Set` или `Collection`, возвращаемый `Map.values()`). Если возвращается отсортированный список, то `List` будет адекватнее.
 
 ###  ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 5. <a href="https://drive.google.com/file/d/1fBSLGEbc7YXBbmr_EwEHltCWNW_pUmIH">Обзор  Spring Framework. Spring Context.</a>
 #### Apply 2_4_add_spring_context.patch
@@ -140,6 +140,7 @@
 #### Apply 2_7_constructor_injection.patch
 - [Inject 2 beans of same type](https://stackoverflow.com/a/2153680/548473)
 - [Перевод "Field Dependency Injection Considered Harmful"](https://habrahabr.ru/post/334636/)
+- [Tutorial: testing with AssertJ](http://www.vogella.com/tutorials/AssertJ/article.html)
 - [Field vs Constructor vs Setter DI](http://stackoverflow.com/questions/39890849/what-exactly-is-field-injection-and-how-to-avoid-it)
 - [Implicit constructor injection for single-constructor scenarios](https://spring.io/blog/2016/03/04/core-container-refinements-in-spring-framework-4-3#implicit-constructor-injection-for-single-constructor-scenarios)
 
@@ -152,12 +153,12 @@
 
 ### ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 6. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFN2N6LS1PVE96SW8">Пояснения к HW2. Обработка Autowired</a>
   
-`<context:annotation-config/>` говорит спрингу при поднятии контекста обрабатывать `@Autowired` (добавляется в контекст спринга `AutowiredAnnotationBeanPostProcessor`). После того, как все бины уже в контексте пост-процессор через отражение инжектит все `@Autowired` зависимости. Будет подробнее в видео "Жизненный цикл Spring контекста" на следующем уроке.
+`<context:annotation-config/>` говорит спрингу при поднятии контекста обрабатывать `@Autowired` (добавляется в контекст спринга `AutowiredAnnotationBeanPostProcessor`). После того, как все бины уже в контексте постпроцессор через отражение инжектит все `@Autowired` зависимости. Будет подробнее в видео "Жизненный цикл Spring контекста" на следующем уроке.
  
 ## ![question](https://cloud.githubusercontent.com/assets/13649199/13672858/9cd58692-e6e7-11e5-905d-c295d2a456f1.png) Ваши вопросы
 > Что такое схема в spring-app.xml xsi:schemaLocation и зачем она нужна
 
-<a href="https://ru.wikipedia.org/wiki/XML_Schema">XML схема</a> нужна для валидации xml, IDEA делает по ней атвозаполнение.
+<a href="https://ru.wikipedia.org/wiki/XML_Schema">XML схема</a> нужна для валидации xml, IDEA делает по ней автозаполнение.
 
 > Что означает для Spring
 
@@ -214,14 +215,14 @@
   - 1.3: предусмотрите случай одинаковых `User.name` (порядок должен быть зафиксированным).
 - 2: **В реализации `InMemoryMealRepositoryImpl`**
   - 2.1: В `Meal`, которая приходит в контроллер нет никакой информации о пользователе (еда приходит в контроллер БЕЗ `user/userId`). Она может быть только авторизованного пользователя, поэтому что-то сравнивать с ним никакого смысла нет. По `id` еды и авторизованному пользователю нужно проверить ее принадлежность.
-  - 2.2: `get\update\delete` - следите, чтобы не было NPE (`NullPointException` может быть, если в хранилище отсутствует узер или еда).
+  - 2.2: `get\update\delete` - следите, чтобы не было NPE (`NullPointException` может быть, если в хранилище отсутствует юзер или еда).
   - 2.3: Проверьте сценарий: авторизованный пользователь пробует изменить чужую еду (id еды ему не принадлежит).
   - 2.4: Фильтрацию по датам сделать в репозитории т.к. из базы будем брать сразу отфильтрованные по дням записи. Следите чтобы **первый и последний день не были обрезаны, иначе сумма калорий будет неверная**.
   - 2.5: Если запрашивается список и он пустой, не возвращайте NULL! По пустому списку можно легко итерироваться без риска `NullPoinException`.
   - 2.6: Не дублируйте код в `getAll` и метод с фильтрацией
-  - 2.7: попробуйте учесть, что следующая реализация (сотрировка, фильтрация) будет делаться прямо в базе данных
+  - 2.7: попробуйте учесть, что следующая реализация (сортировка, фильтрация) будет делаться прямо в базе данных
 - 3: Проверьте, что удалили `Meal.id`, он уже есть в базовом `BaseEntity`
-- 4: Проверку `isBetweenDate` сделать в `DateTimeUtil`. Попробуйте использовать дженерики и объеденить ее с `isBetweenTime`
+- 4: Проверку `isBetweenDate` сделать в `DateTimeUtil`. Попробуйте использовать дженерики и объединить ее с `isBetweenTime`
 - 5: **Реализация 'MealRestController' должен уметь обрабатывать запросы**:
   - 5.1: Отдать свою еду (для отображения в таблице, формат `List<MealWithExceed>`), запрос БЕЗ параметров
   - 5.2: Отдать свою еду, отфильтрованную по startDate, startTime, endDate, endTime
@@ -233,5 +234,5 @@
 - 6: Проверьте корректную обработку пустых значений date и time в контроллере
 - 7: Авторизированного пользователя берем из `AuthorizedUser.id()`, cм. `ProfileRestController`
 - 8: В `MealServlet`
-  - 8.1: Закрывать springContext в сервлете грамотнее всего в `HttpServlet.destroy()`: если где-то в контексте Spring будет ленивая инициализация, метод-фабрика, не синглетон-scope, то контекст понадобится при работе приложения. У нас такого нет, но делать надо все грамотно.
+  - 8.1: Закрывать springContext в сервлете грамотнее всего в `HttpServlet.destroy()`: если где-то в контексте Spring будет ленивая инициализация, метод-фабрика, не синглтон-scope, то контекст понадобится при работе приложения. У нас такого нет, но делать надо все грамотно.
   - 8.2: Не храните параметры фильтра как члены класса сервлета, это не многопоточно! Один экземпляр сервлета используется всеми запросами на сервер, попробуйте дернуть его из 2х браузеров.
