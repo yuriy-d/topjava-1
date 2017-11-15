@@ -20,7 +20,7 @@
 > - Форматирование даты сделал на основе <a href="http://stackoverflow.com/questions/35606551/jstl-localdatetime-format#35607225">JSTL LocalDateTime format</a>
 > - Переименовал `TimeUtil` в `DateTimeUtil`
 > - Переименовал `mealList.jsp` в `meals.jsp`
-> - Добавил еще один способы вывести `dateTime` через стандартную JSTL функцию `replace`  (префикс `fn` в шапке также надо поменять)
+> - Добавил еще один способ вывести `dateTime` через стандартную JSTL функцию `replace`  (префикс `fn` в шапке также надо поменять)
 
 
 - [jsp:useBean](http://www.java2ee.ru/jsp/useBean.html)
@@ -85,7 +85,7 @@
 > DTO используются когда есть избыточность запросов, которую мы уменьшаем, собрав данные из разных бинов в один? Когда DTO необходимо использовать?
 
 (D)TO может быть как частью одного entity  (набор полей) так и набором нескольких entities.
-В нашем проекте для данных, которые надо отдавать наружу и отличающихся от Entiy (хранимый бин), мы будем делать (Data) Transfer Object и класть в отдельный пакет to. Например `MealsWithExceeded` мы отдаем наружу и он является Transfer Object, его надо пернести в пакет `to`.
+В нашем проекте для данных, которые надо отдавать наружу и отличающихся от Entiy (хранимый бин), мы будем делать (Data) Transfer Object и класть в отдельный пакет to. Например `MealsWithExceeded` мы отдаем наружу и он является Transfer Object, его надо перенести в пакет `to`.
 На многих проектах (и собеседованиях) практикуют разделение на уровне maven модулей entity слоя от логики и соответствующей конвертацией ВСЕХ Entity в TO, даже если у них те же самые поля.
 Хороший ответ когда TO обязательны есть на <a href="http://stackoverflow.com/questions/21554977/should-services-always-return-dtos-or-can-they-also-return-domain-models#21569720">stackoverflow: When to Use</a>.
 
