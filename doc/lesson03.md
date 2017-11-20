@@ -130,7 +130,7 @@
 > - Новый PostgreSQL JDBC Driver [логирует через java.util.logging](https://github.com/pgjdbc/pgjdbc#changelog).  [Направил логирование в SLF4J](http://stackoverflow.com/a/43242620/548473)
 > - Поменял формат вывода. См. [Logback Layouts](https://logback.qos.ch/manual/layouts.html)
 
-- Ресурсы, которые кладутся в classpath, maven при сборке берет из определенных каталогов `resources` [Introduction to the Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html). Их можно настраивать через [maven-resources-plugin](https://maven.apache.org/plugins/maven-resources-plugin/examples/resource-directory.html), меняем в проекте Masterjava.
+- Ресурсы, которые кладутся в classpath, maven при сборке берет из определенных каталогов `resources` ([Introduction to the Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)). Их можно настраивать через [maven-resources-plugin](https://maven.apache.org/plugins/maven-resources-plugin/examples/resource-directory.html), меняем в проекте Masterjava.
 
 #### Apply 3_13_fix_servlet.patch
 **Приложение перестало работать, тк. для репозитория мы используем заглушку `JdbcMealRepositoryImpl`**
