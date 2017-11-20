@@ -16,10 +16,10 @@
 #### Apply 3_01_HW2_repository.patch
 > - В репозиториях по другому инстанциировал компараторы. [Оптимизация анонимных классов](http://stackoverflow.com/questions/19718353) не требуется! Почитайте комменты от Holger: *Java 8 relieves us from the need to think about such things at all*.
 > - Зарефакторил `<T extends Comparable<? super T>> DateTimeUtil.isBetween(T value, T start, T end)`. Дженерики означают, что мы принимаем экземпляры класса, реализующего компаратор, который умеет сравнивать T или суперклассы от T
-> - В `InMemoryMealRepositoryImpl.save()` сделал обновление атомарным. В варианте `computeIfPresent` (см. псевдокод в `Map.computeIfPresent`) удаление элемента `if (newValue == null) remove` не используем, т.к. передаем ненулевое новое значение. Используем только атомарный `put`, если элемент присутствует, те вместо 2х операций, разнесенных во времени
->   - проверка `get(meal.getId(), userId)`
+> - В `InMemoryMealRepositoryImpl.save()` вместо 2-х разнесенных по времени операций
+>   - `get(meal.getId(), userId)`
 >   - `meals.put(meal.getId(), meal)`,
->    между которыми может быть например операция удаления этой еды из другого потока делается `meals.computeIfPresent`. `ConcurrentHashMap` в отличие от `HashMap` делает операции атомарно.
+между которыми может вклинится операция удаления этой еды из другого потока, сделал обновление атомарным, используя `ConcurrentHashMap.computeIfPresent()` (см. псевдокод в `Map.computeIfPresent`. `ConcurrentHashMap` в отличие от `HashMap` делает операции атомарно).
 
 #### Apply 3_02_HW2_meal_layers.patch
 > - Перенес обработку null-дат  в `MealRestController.getBetween()`
