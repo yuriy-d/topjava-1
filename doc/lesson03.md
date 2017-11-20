@@ -11,12 +11,12 @@
 
 ## ![hw](https://cloud.githubusercontent.com/assets/13649199/13672719/09593080-e6e7-11e5-81d1-5cb629c438ca.png) Разбор домашнего задания HW02
 ### ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 1. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFdDhnNHFMU2dKQzQ">HW2</a>
-> **ВНИМАНИЕ! При удалении класса из исходников он (скомпилированный) остается в target (и classpath). В этом случае (или в любом другом, когда проект начинает глючить) сделайте `mvn clean`.**
+> **ВНИМАНИЕ! При удалении класса из исходников, его скомпилированная версия все еще будет находиться в target (и classpath). В этом случае (или в любом другом, когда проект начинает глючить) сделайте `mvn clean`.**
 
 #### Apply 3_01_HW2_repository.patch
 > - В репозиториях по другому инстанциировал компараторы. [Оптимизация анонимных классов](http://stackoverflow.com/questions/19718353) не требуется! Почитайте комменты от Holger: *Java 8 relieves us from the need to think about such things at all*.
-> - Зарефакторил `<T extends Comparable<? super T>> DateTimeUtil.isBetween(T value, T start, T end)`. Дженерики означают, что мы принимаем экземпляры класса, который имплементит компаратор, который умеет сравнивать T или суперклассы от T
-> - В `InMemoryMealRepositoryImpl.save()` сделал обновление атомарным. В варианте `computeIfPresent` (см. псевдокод в `Map.computeIfPresent`) удаление элемента `if (newValue == null) remove` не используем, т.к. передаем ненулевое новое значение. Используем только атомарноный `put`, если элемент присутствует, те вместо 2х операций, разнесенных во времени
+> - Зарефакторил `<T extends Comparable<? super T>> DateTimeUtil.isBetween(T value, T start, T end)`. Дженерики означают, что мы принимаем экземпляры класса, реализующего компаратор, который умеет сравнивать T или суперклассы от T
+> - В `InMemoryMealRepositoryImpl.save()` сделал обновление атомарным. В варианте `computeIfPresent` (см. псевдокод в `Map.computeIfPresent`) удаление элемента `if (newValue == null) remove` не используем, т.к. передаем ненулевое новое значение. Используем только атомарный `put`, если элемент присутствует, те вместо 2х операций, разнесенных во времени
 >   - проверка `get(meal.getId(), userId)`
 >   - `meals.put(meal.getId(), meal)`,
 >    между которыми может быть например операция удаления этой еды из другого потока делается `meals.computeIfPresent`. `ConcurrentHashMap` в отличие от `HashMap` делает операции атомарно.
@@ -62,7 +62,7 @@
 > - в `maven-surefire-plugin` (JUnit) <a href="http://stackoverflow.com/questions/17656475/maven-source-encoding-in-utf-8-not-working/17671104#17671104">поменял кодировку на UTF-8</a>
 > - добавил метод `InMemoryUserRepositoryImpl.init()` для инициализации.
 >   - `save()` не больше работает для  отсутствующих `id`
->   - автогенерацию id начал с 10
+>   - автогенерацию id начал со 100
 
 #### Apply 3_07_add_junit.patch
 #### ![question](https://cloud.githubusercontent.com/assets/13649199/13672858/9cd58692-e6e7-11e5-905d-c295d2a456f1.png) Вопрос: почему проект упадет при попытке открыть страничку еды (в логе смотреть самый верх самого нижнего исключения)?
