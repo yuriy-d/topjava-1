@@ -190,7 +190,7 @@ UNIQUE индекс нужен для обеcпечения уникальнос
 
 ## ![hw](https://cloud.githubusercontent.com/assets/13649199/13672719/09593080-e6e7-11e5-81d1-5cb629c438ca.png) Домашнее задание HW03
 - 1 Понять, почему перестали работать `SpringMain, InMemoryAdminRestControllerTest, InMemoryAdminRestControllerSpringTest`
-- 2 Дополнить скрипты создания и инициализации базы таблицой MEALS. Запустить скрипты на вашу базу (через Run). Порядок таблиц при DROP и DELETE важен, если они связаны fk. Проверьте, что ваши скрипты работают
+- 2 Дополнить скрипты создания и инициализации базы таблицой MEALS. Запустить скрипты на вашу базу (через Run). Порядок таблиц при DROP и DELETE важен, если они связаны внешними ключами (foreign key, fk). Проверьте, что ваши скрипты работают
 - 3 Реализовать через Spring JDBC Template `JdbcMealRepositoryImpl`
   - 3.1. сделать каждый метод за один SQL запрос
   - 3.2. `userId` в класс `Meal` вставлять НЕ надо (для UI и REST это лишние данные, userId это id залогиненного пользователя)
@@ -203,7 +203,7 @@ UNIQUE индекс нужен для обеcпечения уникальнос
 > По `Ctrl+Shift+T` (выбрать JUnit4) можно создать тест для конкретного класса, выбрав для него нужные методы. Тестовый класс создастся в папке `test` в том же пакете, что и тестируемый. 
   - 5.1 Сделать тестовые данные `MealTestData` (точно такие же, как вставляем в `populateDB.sql`).
   - 5.2 Сделать тесты на чужую еду (delete, get, update) с тем чтобы получить `NotFoundException`.
-- 6 Предложить решение, как почнинить `SpringMain, InMemory*Test`. `InMemory*Test` **должны использовать реализацию в памяти**
+- 6 Почнинить `SpringMain, InMemory*Test`. `InMemory*Test` **должны использовать реализацию в памяти**
 - 7 Сделать индексы к таблице `Meals`: запретить создавать у одного и того-же юзера еду с одинаковой dateTime.
 Индекс на pk (id) postgres создает автоматически: <a href="http://stackoverflow.com/questions/970562/postgres-and-indexes-on-foreign-keys-and-primary-keys">Postgres and Indexes on Foreign Keys and Primary Keys</a>
   - <a href="http://postgresguide.com/performance/indexes.html">Postgres Guide: Indexes</a>
