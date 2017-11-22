@@ -1,11 +1,11 @@
 # Онлайн проект <a href="https://github.com/JavaWebinar/topjava">Topjava</a>
 
-## <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFfkxqbVpwZUd5anQ2TXE4bm5HbXhtVmkxMUxFSjhNQ1hXYVVTTTZEMzkzN2s">Материалы занятия (скачать все патчи можно через Download папки patch)</a>
+## <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFfkxqbVpwZUd5anQ2TXE4bm5HbXhtVmkxMUxFSjhNQ1hXYVVTTTZEMzkzN2s">Материалы занятия</a>
 
 ### ![error](https://cloud.githubusercontent.com/assets/13649199/13672935/ef09ec1e-e6e7-11e5-9f79-d1641c05cbe6.png) Правки в проекте
 #### **Apply 4_0_fix.patch**
 - В `JdbcUserRepositoryImpl.save()` и `UserServiceImpl.update` добавил проверку на несуществующей в базе `User.id`
-- Зарефакторил в `InMemoryMealRepositoryImpl.getAll/getBetween` filter перед sorted
+- Зарефакторил в `InMemoryMealRepositoryImpl.getAll/getBetween`: `filter()` перед `sorted()`
 
 **Примечание**: в ответе на [Why is SELECT * considered harmful?](https://stackoverflow.com/questions/3639861) есть случаи, когда она допустима (наш случай):
 > When * means "a row"
@@ -47,11 +47,11 @@
      - [Travis CI Tutorial](https://dzone.com/articles/travis-ci-tutorial-java-projects)
      - <a href="https://docs.travis-ci.com/user/languages/java/">Сборка Java проекта</a>
 
+#### **Apply 4_3_improve_code.patch**
 > - Перенес проверки предусловий `Assert` из `InMemory` репозиториев в сервисы
 > - Добавил конфигурацию `.travis.yml`
 > - По [рапорту VersionEye](https://www.versioneye.com/user/projects/5a14435c0fb24f2a6d408cde) обновил зависимости Maven (будем пробовать Spring 5!)
 
-#### **Apply 4_3_improve_code.patch**
 - <a href="https://ru.wikipedia.org/wiki/Контрактное_программирование">Контрактное программирование</a>, <a href="http://neerc.ifmo.ru/wiki/index.php?title=Программирование_по_контракту">Программирование по контракту</a>
 - <a href="http://www.sw-engineering-candies.com/blog-1/comparison-of-ways-to-check-preconditions-in-java">Comparison Preconditions in Java</a>
 - IDEA [Analyze | Inspect Code](https://www.jetbrains.com/help/idea/2017.1/running-inspections.html)
@@ -203,7 +203,7 @@ Hibernate (как любая ORM) реализует маппинг таблиц
 Новая информация плохо оседает в голове, когда дается в виде патчей, поэтому, чтобы она стала "твоей" нужно еще раз проделать это самостоятельно. Домашнее задание на этом уроке небольшое, а полученных знаний уже достаточно, чтобы после его выполнения начинать делать выпускной проект, сделанный на нашем стеке.
 ## [Выпускной проект](graduation.md)
 - Для проекта я взял реальное тестовое задание, поэтому жалоб не неясность формулировок принимать не буду- сделайте как поняли. Представьте, что это ваше тестовое задание на работу.
-- Общение в канале <a href="https://topjava11.slack.com/messages/C6HE35ZQS">graduate_project</a>
+- Общение в канале Slack *#graduate_project*
 - Ревью проекта входит в участие с проверкой домашних заданий (ревьюится один раз!). Отдать на ревью нужно до 08.02.
 - По завершению ты сможешь занести этот проект в свое портфолио и резюме как собственный, без всяких оговорок.
 - Обязательно проверяйся [по рекомендациям в конце выпускного](graduation.md#-Рекомендации)
