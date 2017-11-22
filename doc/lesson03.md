@@ -246,3 +246,4 @@ UNIQUE индекс нужен для обеcпечения уникальнос
 - 7: Проверьте, что все, что относится к тестам, ноходится в каталоге `test` (не попадает в сборку проекта)
 - 8: Еще раз: в тестах проверять через `JUnit Assert` нельзя. Он проверяет через `equals`, который, учитавая будующие JPA реализации, мы не можем переопределить как сравнение по всем поля.
 - 9: НЕ делайте склейку SQL запросов вручную из параметров, только через `jdbcTemplate` параметры! См. [Внедрение_SQL-кода](https://ru.wikipedia.org/wiki/Внедрение_SQL-кода)
+- 10: Напомню: `BeanPropertyRowMapper` работает через отражение. Ему нужны геттеры/сеттеры и имена поле должны "совпадать" с колонками `ResultSet` (Column values are mapped based on matching the column name as obtained from result set metadata to public setters for the corresponding properties. The names are matched either directly or by transforming a name separating the parts with underscores to the same name using "camel" case).
