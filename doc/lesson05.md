@@ -17,14 +17,14 @@
 
 > `EntityManager` это по сути прокси обертка над Hibernate Session, которая создается каждый раз при открытии транзакции. 
 
-- Дополнительно: еще есть редкий случай ручного управления `@PersistenceContext(type = PersistenceContextType.EXTENDED)`, когда он используется в нескольних транзакциях (long-running session or session-per-conversation). Ни разу не сталкивался.
+- Дополнительно (ни разу не сталкивался): еще есть редкий случай ручного управления `@PersistenceContext(type = PersistenceContextType.EXTENDED)`, когда он используется в нескольних транзакциях (long-running session or session-per-conversation).
     - <a href="https://techblog.bozho.net/spring-and-persistencecontexttype-extended/">Spring and PersistenceContextType.EXTENDED</a>
     - <a href="http://stackoverflow.com/questions/2547817/what-is-the-difference-between-transaction-scoped-persistence-context-and-extend">Transaction-scoped vs Extended Persistence</a>
 
 ### ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 2. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFNFMyMGJCZWE4elk">HW4: JPA. @Rule</a>
 #### Apply 5_1_HW4.patch
 > - При сравнении еды тесты падают, тк Hibernate делает ленивую обертку к `user` и если происходит обращение к любому его полю кроме id вне транзакции бросается `LazyInitializationException`.
-По логике приложения мы достаем еду у `AuthorizedUser`, поле `user` нам не нужно и мы не будем его отдавать наружу. Поэтому сравнивать его в тестах не нужно: исключаем из сравнения.
+По логике приложения мы достаем еду у `AuthorizedUser`, поле `user` нам не нужно и мы не будем его отдавать наружу: в тестах исключаем `user` из сравнения.
 > - В `Meal` добавил `@SuppressWarnings("JpaQlInspection")`. <a href="https://jazzy.id.au/2008/10/30/list_of_suppresswarnings_arguments.html">Other warnings</a>
 > - Поменял реализацию `JpaMealRepositoryImpl.get()` (вместо `@NamedQuery`), реализация стали проще
 
