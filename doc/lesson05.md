@@ -23,7 +23,7 @@
 
 ### ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 2. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFNFMyMGJCZWE4elk">HW4: JPA. @Rule</a>
 #### Apply 5_1_HW4.patch
-> - При сравнеии еды тесты падают, тк Hibernate делает ленивую обертку к `user` и если происходит обращение к любому его полю кроме id вне транзакции бросается `LazyInitializationException`.
+> - При сравнении еды тесты падают, тк Hibernate делает ленивую обертку к `user` и если происходит обращение к любому его полю кроме id вне транзакции бросается `LazyInitializationException`.
 По логике приложения мы достаем еду у `AuthorizedUser`, поле `user` нам не нужно и мы не будем его отдавать наружу. Поэтому сравнивать его в тестах не нужно: исключаем из сравнения.
 > - В `Meal` добавил `@SuppressWarnings("JpaQlInspection")`. <a href="https://jazzy.id.au/2008/10/30/list_of_suppresswarnings_arguments.html">Other warnings</a>
 > - Поменял реализацию `JpaMealRepositoryImpl.get()` (вместо `@NamedQuery`), реализация стали проще
@@ -39,7 +39,7 @@
 
 > ![question](https://cloud.githubusercontent.com/assets/13649199/13672858/9cd58692-e6e7-11e5-905d-c295d2a456f1.png) Почему над `AbstractBaseEntity` стоит `@Access(AccessType.FIELD)` ? Почему при запросе `user.id` нам не нужно нужно вытаскивать его из базы?
 
-`AccessType.FIELD` делает доступ в `AbstractBaseEntity` и всех классах-наследниках по полям. При загрузке `Meal` Hibernate на основе поля `meal.user_id` делает ленивую прокcи к `User`, у которой нет ничего, кроме id. Из-за бага хибернайт обращается за юзером в базу, хотя ничего кроме его id нам не надо. `@Access(value = AccessType.PROPERTY)` позволял обойти баг и не делать лишний запрос в базу.
+`AccessType.FIELD` делает доступ в `AbstractBaseEntity` и всех классах-наследниках по полям. При загрузке `Meal` Hibernate на основе поля `meal.user_id` делает ленивую прокcи к `User`, у которой нет ничего, кроме id. Из-за бага хибернайт обращаелся за юзером в базу, хотя ничего кроме его id нам не надо. `@Access(value = AccessType.PROPERTY)` позволял обойти баг и не делать лишний запрос в базу.
 
 #### Apply 5_3_HW4_optional.patch
 
@@ -98,6 +98,8 @@
 > - Переименовал классы _Proxy*_ на более адекватные _Crud*_
 > - В `spring-framework-bom` мы уже задали версию Spring. Убрал из остальных зависимостей.
 > - В spring-data-jpa 2.x поменялся интерфейс: `T CrudRepository.findOne(ID id)` -> `Optional<T> CrudRepository findById(ID id)`
+>   - [Java Optional — Отец холиваров](http://sboychenko.ru/java-optional)
+>   - [Java 8 Optional In Depth](https://www.mkyong.com/java8/java-8-optional-in-depth/)
 
 -  <a class="anchor" id="datajpa"></a><a href="http://projects.spring.io/spring-data-jpa/">Spring Data JPA</a>
 -  Замена AbstractDAO: <a href="http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories">JPA Repositories</a>
