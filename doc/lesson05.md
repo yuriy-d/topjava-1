@@ -37,7 +37,7 @@
 >   - <a href="http://stackoverflow.com/questions/5031614/the-jpa-hashcode-equals-dilemma">JPA hashCode()/equals() dilemma</a>
 >   - <a href="http://blog.xebia.com/advanced-hibernate-proxy-pitfalls/">Hibernate Proxy Pitfalls</a>
 
-> ![question](https://cloud.githubusercontent.com/assets/13649199/13672858/9cd58692-e6e7-11e5-905d-c295d2a456f1.png) Почему над `AbstractBaseEntity` стоит `@Access(AccessType.FIELD)` ? Почему при запросе `user.id` нам не нужно нужно вытаскивать его из базы?
+> ![question](https://cloud.githubusercontent.com/assets/13649199/13672858/9cd58692-e6e7-11e5-905d-c295d2a456f1.png) Почему над `AbstractBaseEntity` стоит `@Access(AccessType.FIELD)` ? Почему при запросе `user.id` нам не нужно вытаскивать его из базы?
 
 `AccessType.FIELD` делает доступ в `AbstractBaseEntity` и всех классах-наследниках по полям. При загрузке `Meal` Hibernate на основе поля `meal.user_id` делает ленивую прокcи к `User`, у которой нет ничего, кроме id. Из-за бага хибернайт обращаелся за юзером в базу, хотя ничего кроме его id нам не надо. `@Access(value = AccessType.PROPERTY)` позволял обойти баг и не делать лишний запрос в базу.
 
@@ -50,7 +50,7 @@
 ## Занятие 5:
 
 ### Раскрасил лог (в Spring Boot по умолчанию он тоже colored)
-#### Apply 5_3_HW4_optional.patch
+#### Apply 5_4_HW4_optional.patch
 - [Logback layouts coloring](https://logback.qos.ch/manual/layouts.html#coloring)
 - Дополнительно: [use colored output only when logging to a real terminal](https://stackoverflow.com/questions/31046748)
 
