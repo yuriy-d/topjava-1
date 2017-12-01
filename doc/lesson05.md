@@ -50,7 +50,7 @@
 ## Занятие 5:
 
 ### Раскрасил лог (в Spring Boot по умолчанию он тоже colored)
-#### Apply 5_4_HW4_optional.patch
+#### Apply 5_4_log_colored.patch
 - [Logback layouts coloring](https://logback.qos.ch/manual/layouts.html#coloring)
 - Дополнительно: [use colored output only when logging to a real terminal](https://stackoverflow.com/questions/31046748)
 
