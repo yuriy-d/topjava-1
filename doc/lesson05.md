@@ -195,4 +195,4 @@
 - 11: В релизации 7.1 учесть, что у юзера может отсутствовать еда
 - 12: [Ordering a join fetched collection in JPA using JPQL/HQL](http://stackoverflow.com/questions/5903774/ordering-a-join-fetched-collection-in-jpa-using-jpql-hql)
 - 13: `<beans profile=` в конфигурации контекста должны находиться после всех остальных объявлений.
-
+- 14: По умолчанию [maven-surefire-plugin](http://maven.apache.org/surefire/maven-surefire-plugin/examples/inclusion-exclusion.html) включает в тесты классы, заканчивающиеся на Test.
