@@ -180,7 +180,7 @@ C `@BatchSize(size = 200)` делается запрос на юзеров (1) �
 > - Выбор языка зависит от языка операционной системы и хедера `Accept-Language`. Добавил в `spring-mvc.xml` `messageSource` параметр [`fallbackToSystemLocale`](http://stackoverflow.com/questions/4281504/spring-local-sensitive-data).
 Он управляет выбором, куда переключаться при выборе en и отсутствии `app_en.properties`: локаль операционной системы или `app.properties` (`fallbackToSystemLocale=false`). Переключение локалей будем реализовывать в конце проекта.  
 
-#### Для тестирования локали [можно поменять `Accept-Language`](https://stackoverflow.com/questions/7769061/how-to-add-custom-accept-languages-to-chrome-for-pseudolocalization-testing). Для хрома в chrome://settings/languages перетащить нужную локаль наверх.
+#### Для тестирования локали [можно поменять `Accept-Language`](https://stackoverflow.com/questions/7769061/how-to-add-custom-accept-languages-to-chrome-for-pseudolocalization-testing). Для хрома в `chrome://settings/languages` перетащить нужную локаль наверх.
 
 -  <a href="http://learningviacode.blogspot.ru/2012/07/reloadable-messagesources.html">Reloadable MessageSources</a>
 -  <a href="http://nginx.com/resources/admin-guide/serving-static-content/">nginx: Serving Static Content</a>
@@ -193,9 +193,9 @@ Hibernate supports following open-source cache implementations out-of-the-box: E
 
 > Где конфигурится интернализация для jstl (т.е. файл, где задаются app, app_ru.properties)? Достаточно указать в страницах бандл и путь в ресурсы?
 
-`<fmt:setBundle basename="messages.app"/>` означает что ресурсы будут искаться в `classpath:messages\app(_xx)/properties`:
+`<fmt:setBundle basename="messages.app"/>` означает что ресурсы будут искаться в `classpath:messages/app(_xx)/properties`:
 <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/fmt/setBundle.html">Tag setBundle</a>: fully-qualified resource name, which has the same form as a fully-qualified class name.
-После сборки проекта maven их можно найти в target\classes или target\topjava\WEB-INF\classes.
+После сборки проекта maven их можно найти в `target/classes` или `target/topjava/WEB-INF/classes`.
 
 > Отлично, что она все пишет на том языке, который пришел в хидере запроса. А если я хочу выбрать?
 
@@ -209,18 +209,12 @@ Hibernate supports following open-source cache implementations out-of-the-box: E
 > В плагине прописан профиль `<spring.profiles.active>tomcat,datajpa</spring.profiles.active>`, а в web.xml `<param-value>postgres,datajpa</param-value>`.
 Какой же реально отрабатывает?
 
-См видео урока "Динамическое изменение профиля при запуске". В плагине мы задаем параметры JVM запуска Tomcat
+См. видео урока "Динамическое изменение профиля при запуске". В плагине мы задаем параметры JVM запуска Tomcat
 
 > Почему мы не используем элемент `<context:annotation-config/>` в `spring-db.xml`?
 
 В проекте у нас сейчас 2 Spring контекста: `spring-mvc.xml (см. web.xml, DispatcherServlet)` и родительский `spring-app.xml + spring-db.xml (web.xml, contextConfigLocation)`.
 Грубо: 2 мапы, причем для mvc доступно все что есть в родителе. Те `spring-db.xml` не является отдельным самостоятельным контекстом и достаточно того, что `<context:annotation-config/>` у нас есть в `spring-app.xml`.
-
-> В _ehcache.xml_ чем _<cache name="users"_ отличается от _<cache name="ru.javawebinar.topjava.model.User"_?
-
-_user_ - это имя региона ecache, которое мы выбрали для кэширования c помощью Spring Cache `Collection<User> getAll()` в `UserServiceImpl`.
-_ru.javawebinar.topjava.model.User_ - имя региона, которое использует Hibernate для кэширования содержимого таблицы _USERS_.
-Мы можем оставить настройки по умолчанию, либо задать свои.
 
 > A `@NamedQuery` или `@Query` подвержены кешу запросов? Т.е. если мы поставим _USE_QUERY_CACHE_value_="true" будет Hibernate их кешировать?
 
@@ -261,14 +255,14 @@ _ru.javawebinar.topjava.model.User_ - имя региона, которое ис
   - <a href="http://iliachemodanov.ru/ru/blog-ru/12-tools/57-junit-ignore-test-by-condition-ru">org.junit.Assume</a>
   - <a href="http://www.ekiras.com/2015/09/spring-how-to-get-current-profiles-in-spring-application.html">How to get Current Profiles in Spring Application</a>
 - 1.3 Починить работу meals: перенести функциональность `MealServlet` в контроллеры (сервлеты удалить)
-  - 1.3.1 разнести запросы на update/delete/.. по разным методам (попробуйте вообще без `action=`). Можно по аналогии с `RootController#setUser` принимать `HttpServletRequest request` (аннотации на параметры и адаптеры для `LocalDate\Time` мы введем позже). 
+  - 1.3.1 разнести запросы на update/delete/.. по разным методам (попробуйте вообще без `action=`). Можно по аналогии с `RootController#setUser` принимать `HttpServletRequest request` (аннотации на параметры и адаптеры для `LocalDate/Time` мы введем позже). 
   - 1.3.2 в одном контроллере нельзя использовать другой. Чтобы не дублировать код можно сделать наследование.
   - 1.3.3 добавить локализацию и `jsp:include` в `mealForm.jsp / meals.jsp`
 
 #### Optional
 - 2.1 Добавить транзакционность (`DataSourceTransactionManager`) в Jdbc реализации  
 - 2.2 Добавить еще одну роль к ADMIN (будет 2 роли: `ROLE_USER, ROLE_ADMIN`)
-- 2.3 Добавить проверку ролей в UserTestData.MATCHER
+- 2.3 Добавить проверку ролей в UserTestData.assertMatch
 - 2.4 Починить тесты в `JdbcUserRepositoryImpl` (добавить роли). 
   - 2.4.1 В реализации `getAll` НЕ делать запрос ролей для каждого юзера (N+1 select)
   - 2.4.2 При save посмотрите на <a href="https://www.mkyong.com/spring/spring-jdbctemplate-batchupdate-example/">batchUpdate()</a>
