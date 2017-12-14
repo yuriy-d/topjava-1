@@ -166,6 +166,10 @@ C `@BatchSize(size = 200)` делается запрос на юзеров (1) �
    -  <a href="http://www.mkyong.com/spring-mvc/spring-mvc-hello-world-example/">Spring MVC hello world</a>
    -  <a href="https://docs.spring.io/spring/docs/4.3.x/spring-framework-reference/html/mvc.html#mvc-webappctx-special-beans-tbl">Special bean types in the WebApplicationContext</a>
 
+> Настройки `Project Structure->Modules->Spring`:
+
+![image](https://cloud.githubusercontent.com/assets/13649199/22221277/52c03cb4-e1c3-11e6-9039-08787e31a505.png)
+
 > ![](https://cloud.githubusercontent.com/assets/13649199/13672858/9cd58692-e6e7-11e5-905d-c295d2a456f1.png) В `web.xml` мы инициализируем `DispatcherServlet`, передавая ему параметром `spring-mvc.xml`. Получается, что `DispatcherServlet` парсит `spring-mvc.xml` и находит в нем context?
 
 Нет. `spring-mvc.xml` парсит какой-то из спринговых ApplicationContext (думаю что `XmlWebApplicationContext`).
